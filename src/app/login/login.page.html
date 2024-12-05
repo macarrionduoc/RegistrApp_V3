@@ -1,0 +1,71 @@
+
+
+<ion-content [fullscreen]="true">
+ 
+  <div class="logo-container"   >
+    <img #logo  src="assets/icon/logoblanco.png" alt="logotipo de la Empresa" class="logo" />
+    
+  </div>
+
+  <div class = "text-titulo">
+    <p> Inicio de Sesion </p>
+  </div>
+  
+  
+   
+    
+  <form [formGroup]="loginForm" >
+    <ion-item>
+        <ion-label position="stacked">Usuario</ion-label>
+        <ion-input formControlName= "username"    placeholder="Ingresa usuario" maxlength="10"></ion-input>
+        <p> </p>  
+    </ion-item>
+
+    <div *ngIf="loginForm.get('username')?.invalid &&  loginForm.get('username')?.touched"> Error Usuario</div>   
+
+    <ion-item>
+      <ion-label position="stacked">Contraseña</ion-label>
+      <ion-input  formControlName= "password"  type="password" placeholder="****"  maxlength="4"></ion-input>  
+  </ion-item>
+  <div *ngIf="loginForm.get('password')?.invalid &&  loginForm.get('password')?.touched"> Debes ingresar una contraseña válida</div>   
+
+  
+
+  <!--<ion-button expand="block"  type="submit [disabled]=loginform.valid"> Ingresar</ion-button>-->
+
+<!-- Botón para Alumno -->
+<ion-button expand="block" (click)="onLoginAlumno()" [disabled]="!loginForm.valid">
+  Ingresar Alumno
+</ion-button>
+<br>
+<!-- Botón para Docente -->
+<ion-button expand="block" (click)="onLoginDocente()" [disabled]="!loginForm.valid">
+  Ingresar Docente
+</ion-button>
+
+
+
+</form>
+
+<ion-toast trigger="open-toast" message="El usuario y/o contraseña es inválido" [duration]="3000"></ion-toast>
+
+<ion-item>
+  <p> Si has olvidado o Bloqueado tus credenciales haz clic Aqui!! </p>
+</ion-item>
+
+<ion-item>
+  <ion-button expand="block" >Recuperar clave</ion-button>
+  <!--(click)="recuperarClave()-->
+</ion-item>
+  
+<ion-item>
+  <p> Si no posees credenciales Haz clic aqui!! </p>
+</ion-item>
+
+
+<ion-item>
+  <ion-button (click)="toRegistro()"> Registro </ion-button>
+</ion-item>
+  
+
+</ion-content>

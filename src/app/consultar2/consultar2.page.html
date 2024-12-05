@@ -1,0 +1,213 @@
+<ion-content [fullscreen]="true">
+  <div class="logo-container">
+    <img
+      #logo
+      src="assets/icon/logoblanco.png"
+      alt="logotipo de la Empresa"
+      class="logo"
+    />
+  </div>
+
+  <div class="text-titulo">
+    <p>LISTA DE ALUMNOS</p>
+  </div>
+
+  <br />
+
+  <!-- INICIO FORMULARIO PARA CRUD - NUEVO -->
+  <ion-content [fullscreen]="true">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Datos del Alumno</ion-card-title>
+        <ion-card-subtitle
+          >Formulario para gestión de alumnos</ion-card-subtitle
+        >
+      </ion-card-header>
+
+      <form [formGroup]="registroForm" (ngSubmit)="agregar()">
+        <ion-item>
+          <ion-label position="stacked">Nombre</ion-label>
+          <ion-input
+            type="text"
+            formControlName="nombre"
+            placeholder="Ingrese nombre"
+          ></ion-input>
+        </ion-item>
+        <!--[(ngModel)]="nombre"-->
+        <div
+          class="error-mensaje"
+          *ngIf="registroForm.get('nombre')?.invalid &&  registroForm.get('nombre')?.touched"
+        >
+          Debes ingresar tu nombre
+        </div>
+
+        <ion-item>
+          <ion-label position="stacked">Apellido</ion-label>
+          <ion-input
+            type="text"
+            formControlName="apellido"
+            placeholder="Ingrese apellido"
+          ></ion-input>
+        </ion-item>
+        <!--[(ngModel)]="apellido"-->
+        <div
+          class="error-mensaje"
+          *ngIf="registroForm.get('apellido')?.invalid &&  registroForm.get('apellido')?.touched"
+        >
+          Debes ingresar tu apellido
+        </div>
+
+        <ion-item>
+          <ion-label position="stacked">Rut</ion-label>
+          <ion-input
+            type="text"
+            formControlName="rut"
+            placeholder="Ingrese rut"
+          ></ion-input>
+        </ion-item>
+        <!--[(ngModel)]="rut"-->
+        <div
+          class="error-mensaje"
+          *ngIf="registroForm.get('rut')?.invalid &&  registroForm.get('rut')?.touched"
+        >
+          Debes ingresar tu rut
+        </div>
+        <ion-item>
+          <ion-label position="stacked">Edad</ion-label>
+          <ion-input
+            type="number"
+            formControlName="edad"
+            placeholder="Ingrese edad"
+            min="2"
+          ></ion-input>
+        </ion-item>
+        <!--[(ngModel)]="edad"-->
+        <div
+          class="error-mensaje"
+          *ngIf="registroForm.get('edad')?.invalid &&  registroForm.get('edad')?.touched"
+        >
+          Debes ingresar tu edad
+        </div>
+
+        <ion-item>
+          <ion-label position="stacked">Correo</ion-label>
+          <ion-input
+            type="text"
+            formControlName="correo"
+            placeholder="Ingrese correo"
+          ></ion-input>
+        </ion-item>
+        <!--[(ngModel)]="correo"-->
+        <div
+          class="error-mensaje"
+          *ngIf="registroForm.get('correo')?.invalid &&  registroForm.get('correo')?.touched"
+        >
+          Debes ingresar tu correo electronico
+        </div>
+
+        <ion-item>
+          <ion-label position="stacked">Carrera</ion-label>
+          <ion-select
+            formControlName="carrera"
+            placeholder="Seleccione una carrera"
+          >
+            <ion-select-option value="informatica"
+              >Informatica</ion-select-option
+            >
+            <ion-select-option value="analista">Analista</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <!--[(ngModel)]="carrera"-->
+        <div
+          class="error-mensaje"
+          *ngIf="registroForm.get('carrera')?.invalid &&  registroForm.get('carrera')?.touched"
+        >
+          Debes ingresar tu carrera
+        </div>
+
+        <ion-grid *ngIf="mensajeExitoso">
+          <ion-row>
+            <ion-col class="alerta-exito"> Registro Exitoso </ion-col>
+          </ion-row>
+        </ion-grid>
+
+        <ion-grid *ngIf="mensajeError">
+          <ion-row>
+            <ion-col class="alerta-error"> Registro Invalido </ion-col>
+          </ion-row>
+        </ion-grid>
+        <ion-button
+          expand="block"
+          (click)="agregar()"
+          [disabled]="!registroForm.valid"
+          >Registrar</ion-button
+        >
+        <ion-button expand="block" (click)="modificar()">Modificar</ion-button>
+      </form>
+    </ion-card>
+
+    <div *ngIf="personas.length>0">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>Lista de Alumnos</ion-card-title>
+        </ion-card-header>
+      </ion-card>
+      <ion-card *ngFor="let individuo of personas">
+        <ion-card-content>
+          <ion-grid>
+            <ion-row>
+              <ion-col><b>Alumno</b></ion-col>
+              <ion-col>{{individuo.nombre}}</ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col><b>Edad</b></ion-col>
+              <ion-col>{{individuo.edad}}</ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col><b>Carrera</b></ion-col>
+              <ion-col>{{individuo.carrera}}</ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+                <ion-button
+                  size="small"
+                  fill="outline"
+                  (click)="buscar(individuo.identificador)"
+                  >Buscar</ion-button
+                >
+              </ion-col>
+              <ion-col>
+                <ion-button
+                  size="small"
+                  fill="outline"
+                  color="danger"
+                  (click)="eliminar(individuo.identificador)"
+                  >Eliminar</ion-button
+                >
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card-content>
+      </ion-card>
+    </div>
+
+    <!-- BOTONES ORIGINALES DEL CRUD
+    <h1>Lista de Alumnos</h1>
+    <ion-list *ngFor="let individuo of personas">
+        <ion-card>
+            <ion-label> Alumnno: {{individuo.nombre}} - Edad: {{individuo.edad}} - Carrera: {{individuo.carrera}}  </ion-label>
+            <ion-button size="small" fill="outline" (click)="buscar(individuo.identificador)">Buscar</ion-button>
+            <ion-button size="small" fill="outline" color="danger" (click)="eliminar(individuo.identificador)">Eliminar</ion-button>
+          </ion-card>
+    </ion-list>
+BOTONES ORIGINALES DEL CRUD -->
+    <!-- FIN FORMULARIO PARA CRUD -->
+
+    <!--BOTON VOLVER A HOME2 QUE YA ESTABA -->
+    <div class="boton-consultar">
+      <ion-button size="small" type="submit" (click)="Tohome2()"
+        >Ir a home</ion-button
+      >
+    </div>
+  </ion-content></ion-content
+>

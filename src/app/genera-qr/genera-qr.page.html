@@ -1,0 +1,67 @@
+<ion-content [fullscreen]="true">
+  <div class="logo-container">
+    <img
+      #logo
+      src="assets/icon/logoblanco.png"
+      alt="logotipo de la Empresa"
+      class="logo"
+    />
+  </div>
+
+  <br />
+
+  <ion-card *ngFor="let c of cursos" style="cursor:pointer" (click)="generarQR(c)">
+    <ion-grid>
+      <ion-row>
+        <ion-col>{{c.asignatura}}</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>{{c.profesor}}</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>{{c.fecha}}</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>{{c.hora}}</ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+  
+
+
+  <!--
+  <ion-label class="textoQR" position="slot">
+    INGRESAR INFORMACION PARA EL QR
+  </ion-label>
+
+  <br />
+  <ion-card>
+    <ion-item>
+      <ion-item>
+        <ion-input [(ngModel)]="qrData"> Ingresa el Texto aqui </ion-input>
+      </ion-item>
+    </ion-item>
+  </ion-card>
+
+  <br />
+
+  <ion-button expand="full" (click)="generateQRCode()"> GENERAR QR </ion-button>
+  -->
+
+  <div class="imagenQR" *ngIf="createdCode">
+    <qrcode
+      [qrdata]="createdCode"
+      [width]="256"
+      [errorCorrectionLevel]="'M'"
+    ></qrcode>
+  </div>
+
+  <br />
+
+  <ion-item>
+    <ion-button expand="block" type="submit" (click)="toHome2()">
+      Ir a Home
+    </ion-button>
+    <!--<ion-button expand="full" (click)="toHome()"> Ir a Home2 </ion-button>-->
+  </ion-item>
+</ion-content>

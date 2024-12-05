@@ -1,0 +1,192 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "@ionic/angular/css/normalize.css";
+@import "@ionic/angular/css/structure.css";
+@import "@ionic/angular/css/typography.css";
+@import "@ionic/angular/css/display.css";
+
+/* Optional CSS utils that can be commented out */
+@import "@ionic/angular/css/padding.css";
+@import "@ionic/angular/css/float-elements.css";
+@import "@ionic/angular/css/text-alignment.css";
+@import "@ionic/angular/css/text-transformation.css";
+@import "@ionic/angular/css/flex-utils.css";
+
+/**
+ * Ionic Dark Mode
+ * -----------------------------------------------------
+ * For more info, please see:
+ * https://ionicframework.com/docs/theming/dark-mode
+ */
+
+/* @import "@ionic/angular/css/palettes/dark.always.css"; */
+/* @import "@ionic/angular/css/palettes/dark.class.css"; */
+@import '@ionic/angular/css/palettes/dark.system.css';
+
+
+.logo-container {
+    display: flex;
+    justify-content: center;
+
+}
+
+.text-titulo {
+    text-align: center;
+    justify-content: center;
+}
+
+.text-menu {
+
+    text-align: center;
+    justify-content: center;
+}
+
+.text-nosotros {
+
+    text-align: center;
+    justify-content: center;
+}
+
+.sobrenosotros {
+
+    text-align: center;
+    font-size: 16px;
+    width: 20px;
+    justify-content: center;
+}
+
+.logo-camara {
+
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+}
+
+.text-camara {
+
+
+    margin-left: 80px;
+    margin-right: 80px;
+}
+
+.text-perfil {
+
+    margin-left: 50px;
+    margin-top: 50px;
+
+}
+
+.text-mesa {
+
+    margin-left: 15px;
+    text-align: center;
+    margin-right: 15px;
+    margin-top: 40px;
+
+}
+
+.logo-whatsap {
+
+    margin-top: 85px;
+
+}
+
+.text-whatsap {
+
+    text-align: center;
+
+
+}
+
+.text-nosotros {
+
+    margin-right: 10px;
+    margin-left: 5px;
+
+}
+
+.boton-consultar {
+
+    top: 50px;
+}
+
+// Css enfocado en la ubicacion de los datos de perfil !!//
+.text-perfil {
+
+    margin-right: 40px;
+
+}
+
+.logo2 {
+
+    margin-top: 40px;
+
+}
+
+// css enfocado en la foto de Home de abajo //
+
+.textoQR {
+
+    margin-left: 60px;
+
+}
+
+// posicion del QR en la vista generar QR
+.imagenQR {
+
+    margin-top: 50px;
+    margin-left: 60px;
+}
+
+// titulo registro de la vista registro
+.registro-toolbar {
+    text-align: center;
+}
+
+.error-mensaje {
+    color: red;
+    font-size: 12px;
+    /* Opcional: ajusta el tamaño del texto según lo que necesites */
+    margin-top: 4px;
+    /* Opcional: ajusta el espacio con el campo de entrada */
+    padding-left: 1rem;
+}
+
+
+.alerta-exito {
+    text-align: center;
+    padding: 1rem;
+    margin: 1rem;
+    background-color: rgba(34, 222, 46, 0.451);
+    color: black;
+    font-size: 1.5rem;
+}
+
+.alerta-error{
+
+    text-align: center;
+    padding: 1rem;
+    margin: 1rem;
+    background-color: rgba(231, 23, 23, 0.451);
+    color: black;
+    font-size: 1.5rem;
+
+
+
+
+
+
+}

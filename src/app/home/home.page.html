@@ -1,0 +1,107 @@
+
+
+ 
+ 
+   
+    <!-- TITULO INICIO TOOLBAR  -->
+    <ion-menu side="start" menuid="first" contentId="main-content">
+    <ion-header>
+      <ion-toolbar  color="primary"> OPCIONES </ion-toolbar>
+    </ion-header>
+
+    
+    <!-- MENU DE OPCIONES TOOLBAR -->
+    <ion-content class="padding"> 
+    
+      <ion-list>
+        <ion-menu-toggle>
+          <ion-item routerLink="/profile">   DATOS PERSONALES
+            <ion-icon slot="start" name="person-circle-outline"></ion-icon>
+          </ion-item>
+        </ion-menu-toggle>
+        
+        <ion-menu-toggle>
+          <ion-item routerLink="/confirmar"> CONFIRMAR ASISTENCIA
+            <ion-icon slot="start" name="checkmark-circle-outline"></ion-icon>
+          </ion-item>
+        </ion-menu-toggle>
+
+        <ion-menu-toggle>
+          <ion-item routerLink="/consultar"> CONSULTAR ASISTENCIA
+            <ion-icon slot="start"  name="document-text-outline" ></ion-icon>
+          </ion-item>
+        </ion-menu-toggle>
+
+        <ion-menu-toggle>
+          <ion-item routerLink="/mesa"> MESA DE SERVICIO
+            <ion-icon slot="start"  name="call-outline"></ion-icon>
+          </ion-item>
+        </ion-menu-toggle>
+
+        <ion-menu-toggle>
+          <ion-item routerLink="/login"> SALIR
+            <ion-icon slot="start" name="exit-outline"></ion-icon>
+          </ion-item>
+        </ion-menu-toggle>
+
+          
+      <!--<ion-item>
+        <ion-button expand="block" type="submit" (click)="goToconsultar()"> Consultar Asistencia</ion-button>
+      </ion-item>
+      
+      <ion-item>
+        <ion-button expand="block" type="submit" (click)="goTomesa()"> Mesa de Servicio </ion-button>
+      </ion-item>
+      
+      <ion-item>
+        <div class="boton-volver">
+        <ion-button expand="block" type="submit" (click)="goTologin()"> Salir </ion-button>
+        </div>
+      </ion-item>
+      
+    -->
+    </ion-list>
+
+  </ion-content>
+ 
+</ion-menu>
+  <!--TITULO PRINCIPAL DE TOOLBAR-->
+  <div class="ion-page" id="main-content">
+    <ion-header>
+    <ion-toolbar color="primary"> 
+      <ion-buttons slot="start"> 
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>  
+      
+      <ion-title> MENU APP {{usuario}} </ion-title>
+
+        
+    </ion-toolbar>
+
+  </ion-header>
+<!-- CARD IMAGEN CON INFORMACION SOBRE NOSOTROS-->
+  <ion-card>
+    <img alt="Silhouette of mountains" src="assets/icon/reunion.jpg" />
+    <ion-card-header>
+      <ion-card-title> Sobre Nosotros </ion-card-title>
+      <ion-card-subtitle> RegistrAPP </ion-card-subtitle>
+    </ion-card-header>
+  
+  
+    <ion-card-content>
+      En RegistrAPP, somos una empresa comprometida con la innovación tecnológica, especializada en el desarrollo de soluciones móviles para la gestión y control de asistencia. Nuestro objetivo principal es simplificar y automatizar los procesos de registro en empresas, centros educativos y eventos, optimizando la eficiencia y garantizando un control preciso en tiempo real. Con una interfaz intuitiva y fácil de usar, RegistrAPP está diseñada para adaptarse a las necesidades de cualquier organización, independientemente de su tamaño. Nuestro compromiso es brindar soluciones digitales que faciliten la vida diaria de las organizaciones, ayudándoles a crecer de manera más eficiente y organizada.
+    </ion-card-content>
+  </ion-card>
+  
+</div>
+
+
+
+  
+
+
+  
+
+ 
+ 
+

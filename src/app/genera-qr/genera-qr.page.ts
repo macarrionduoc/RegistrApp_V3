@@ -50,4 +50,13 @@ export class GeneraQrPage implements OnInit {
   async listar() {
     this.cursos = (await this.storageService.obtenerDatos('cursos')) || [];
   }
+
+  // INICIO NUEVA FUNCION CRUD Para eliminar registros de QR listados
+  async eliminarCurso(identificador: string) {
+    // Llamar al servicio de almacenamiento para eliminar el curso
+    await this.storageService.eliminar('cursos', identificador);
+  
+    // Actualizar la lista después de eliminar el registro
+    this.listar();// FIN NUEVA FUNCION CRUD Para eliminar registros de QR listados
+}
 }

@@ -24,30 +24,18 @@
       <ion-row>
         <ion-col>{{c.hora}}</ion-col>
       </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-button fill="outline" size="small" color="danger" (click)="eliminarCurso(c.identificador)">
+            Eliminar
+          </ion-button>
+        </ion-col>
+      </ion-row>
+
     </ion-grid>
   </ion-card>
   
-
-<!--COMENTARIO GITHUB 12-12-2024-->
-  <!--
-  <ion-label class="textoQR" position="slot">
-    INGRESAR INFORMACION PARA EL QR
-  </ion-label>
-
-  <br />
-  <ion-card>
-    <ion-item>
-      <ion-item>
-        <ion-input [(ngModel)]="qrData"> Ingresa el Texto aqui </ion-input>
-      </ion-item>
-    </ion-item>
-  </ion-card>
-
-  <br />
-
-  <ion-button expand="full" (click)="generateQRCode()"> GENERAR QR </ion-button>
-  -->
-
   <div class="imagenQR" *ngIf="createdCode">
     <qrcode
       [qrdata]="createdCode"
@@ -62,6 +50,5 @@
     <ion-button expand="block" type="submit" (click)="toHome2()">
       Ir a Home
     </ion-button>
-    <!--<ion-button expand="full" (click)="toHome()"> Ir a Home2 </ion-button>-->
   </ion-item>
 </ion-content>

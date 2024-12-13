@@ -1,6 +1,3 @@
-
-
-
 import { Component, OnInit,OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -8,8 +5,6 @@ import { IonicModule } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { Html5QrcodeScanner,Html5QrcodeScanType } from 'html5-qrcode';
 import { StorageService } from 'src/app/storage.service';
-
-
 
 @Component({
   selector: 'app-confirmar',
@@ -19,14 +14,12 @@ import { StorageService } from 'src/app/storage.service';
   imports: [IonicModule, CommonModule, FormsModule]
 })
 
-
 export class ConfirmarPage implements OnInit,OnDestroy{
 
   // variables declaradas
   scannerResult:string | null=null; // Resultado del escaneo QR
   private Html5Qrcode : Html5QrcodeScanner | null=null; 
   isCameraPermissionGranted:boolean = false;
-
 
   // Nueva variable para almacenar los datos guardados
   datosGuardados: any[] = [];
@@ -49,9 +42,6 @@ export class ConfirmarPage implements OnInit,OnDestroy{
     console.log('Datos de QR guardados:', this.datosGuardados);
   }
 
-
-  
-
   requestCameraPermission(){
     // verificar si se han concedido los permisos 
     alert('Permitir acceso?');
@@ -71,9 +61,6 @@ export class ConfirmarPage implements OnInit,OnDestroy{
         alert("Navegador no soporta la camara");
     }// Fin If
   }// fin Request Camera 
-
- 
-  
   
   startScanner(){
     const config = {
@@ -81,9 +68,6 @@ export class ConfirmarPage implements OnInit,OnDestroy{
       qrbox:250,
       supportedScanTypes: [Html5QrcodeScanType.SCAN_TYPE_CAMERA]
     };
-
-
-
     
     this.Html5Qrcode = new Html5QrcodeScanner("reader", config, false);
     this.Html5Qrcode.render(async(result) =>{ // aca se agregó "async" solamente

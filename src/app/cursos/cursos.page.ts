@@ -19,12 +19,11 @@ interface Curso {
   templateUrl: './cursos.page.html',
   styleUrls: ['./cursos.page.scss'],
   standalone: true,
-  imports: [IonContent, CommonModule, FormsModule,IonicModule, ReactiveFormsModule]
+  imports: [IonContent,CommonModule, FormsModule,IonicModule, ReactiveFormsModule]
 })
 export class CursosPage implements OnInit {
   cursosForm!: FormGroup;
   cursos: Curso[] = [];
-
 
   constructor(
     private router: Router,
@@ -33,11 +32,15 @@ export class CursosPage implements OnInit {
   ) {
     this.cursosForm = this.fb.group({
       asignatura: ['', [Validators.required, Validators.minLength(3)]],
-      fecha: ['', [Validators.required]],
-      hora: ['', [Validators.required]]
+      fecha: ['', [
+        Validators.required, 
+        Validators.pattern(/^\d{4}(-\d{2}){2}$/) // Formato: YYYY-MM-DD o solo números
+      ]],
+      hora: ['', [
+        Validators.required, 
+        Validators.pattern(/^([01]?\d|2[0-3]):[0-5]\d$/) // Formato: HH:mm (24 horas)
+      ]]
     });
-
-
   }
 
   async ngOnInit() {
@@ -55,14 +58,12 @@ export class CursosPage implements OnInit {
       profesor: usuario,
       identificador: Date.now().toString() //genera un identificador unico
     };
-
   
     this.cursos.push(nuevaAsignatura);
 
     let resp = await this.storageService.agregar('cursos', nuevaAsignatura);
 
     this.cursosForm.reset()
-
 
     if (resp) {
       alert('Asignatura Creada');

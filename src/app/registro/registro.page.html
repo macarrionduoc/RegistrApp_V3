@@ -1,6 +1,3 @@
-
-
-
 <!--Barra de título-->
 <ion-header [translucent]="true">
   <ion-toolbar class="registro-toolbar" color="primary">
@@ -15,67 +12,43 @@
   </ion-toolbar>
 </ion-header>
 
-
-
 <ion-content [fullscreen]="true">
-
   <ion-card>
-
     <ion-card-header>
-     <ion-card-title> Datos Personales de Registro </ion-card-title>
-     <ion-card-subtitle> Formulario </ion-card-subtitle>
+      <ion-card-title> Datos Personales de Registro </ion-card-title>
+      <ion-card-subtitle> Formulario </ion-card-subtitle>
     </ion-card-header>
-
-
     <form [formGroup]="registroForm"   (ngSubmit)="agregar()">
-
     <ion-item>
       <ion-label position="stacked"> Usuario de cuenta </ion-label>      
       <ion-input type="text" formControlName= "usuario" placeholder="Ingrese usuario"></ion-input> 
     </ion-item>
       <div class="rojo" *ngIf="registroForm.get('usuario')?.invalid &&  registroForm.get('usuario')?.touched"> Debes ingresar tu Usuario de cuenta </div>   
-  
-
     <ion-item>
       <ion-label position="stacked"> Nombres </ion-label>      
       <ion-input type="text" formControlName= "nombre" placeholder="ingrese su nombre"></ion-input> 
     </ion-item>
     <div class="rojo" *ngIf="registroForm.get('nombre')?.invalid &&  registroForm.get('nombre')?.touched"> Debes ingresar tu nombre</div>   
-
-    
-
     <ion-item>
       <ion-label position="stacked"> Apellidos </ion-label>      
       <ion-input type="text" formControlName="apellido" placeholder="ingrese sus Apellidos"></ion-input> 
     </ion-item>
-
     <div *ngIf="registroForm.get('apellido')?.invalid &&  registroForm.get('apellido')?.touched" class="rojo"> Debes ingresar tu apellido</div>   
-
-
     <ion-item>
-      <ion-label position="stacked"> Rut </ion-label>      
+      <ion-label position="stacked" type="text"> Rut </ion-label>      
       <ion-input type="text" formControlName="rut" placeholder="Ingrese Rut"></ion-input> 
     </ion-item>
-
-    <div class="rojo" *ngIf="registroForm.get('rut')?.invalid &&  registroForm.get('rut')?.touched"> Debes ingresar tu rut</div>   
-
-
+    <div class="rojo" *ngIf="registroForm.get('rut')?.invalid &&  registroForm.get('rut')?.touched">Debes ingresar rut en formato solo numeros y con -</div>   
     <ion-item>
       <ion-label position="stacked"> Edad </ion-label>      
-      <ion-input type="text" formControlName="edad" placeholder=" Ingrese su Edad"></ion-input> 
+      <ion-input type="number" formControlName="edad" placeholder=" Ingrese su Edad"></ion-input> 
     </ion-item>
-
-    <div class="rojo" *ngIf="registroForm.get('edad')?.invalid &&  registroForm.get('edad')?.touched"> Debes ingresar tu edad</div>   
-
-
+    <div class="rojo" *ngIf="registroForm.get('edad')?.invalid &&  registroForm.get('edad')?.touched">ingresa tu edad</div>   
     <ion-item>
       <ion-label position="stacked"> Correo </ion-label>      
       <ion-input type="text" formControlName="correo" placeholder=" Ingrese su correo"></ion-input> 
     </ion-item>
-
-    <div class="rojo" *ngIf="registroForm.get('correo')?.invalid &&  registroForm.get('correo')?.touched"> Debes ingresar tu correo</div>   
-
-      
+    <div class="rojo" *ngIf="registroForm.get('correo')?.invalid &&  registroForm.get('correo')?.touched"> Debes ingresar tu correo con Dominio de Correo</div>   
     <ion-item>
       <ion-label position="stacked"> Carrera </ion-label>      
       <ion-select formControlName="carrera" placeholder="Ingrese Carrera">
@@ -84,10 +57,7 @@
         <ion-select-option value="ninguna"> Ninguna</ion-select-option>
       </ion-select>
     </ion-item>
-
-    <div class="rojo" *ngIf="registroForm.get('carrera')?.invalid &&  registroForm.get('carrera')?.touched"> Debes ingresar tu carrera</div>   
-
-
+    <div class="rojo" *ngIf="registroForm.get('carrera')?.invalid &&  registroForm.get('carrera')?.touched"> Debes ingresar una de las opciones</div>   
     <ion-item>
       <ion-label position="stacked"> Tipo Usuario </ion-label>      
       <ion-select formControlName="rol" placeholder="Ingrese rol">
@@ -95,35 +65,19 @@
         <ion-select-option value="alumno"> Alumno</ion-select-option>
       </ion-select> 
     </ion-item>
-
     <div class="rojo" *ngIf="registroForm.get('rol')?.invalid &&  registroForm.get('rol')?.touched"> Debes ingresar tu rol</div>   
-
-
     <ion-item>
       <ion-label position="stacked"> Ingrese Contraseña </ion-label>      
-      <ion-input type="password" formControlName="contrasena" placeholder=" Ingrese su Contraseña"></ion-input> 
+      <ion-input type="password" formControlName="contrasena" placeholder="Ingrese su Contraseña"></ion-input> 
     </ion-item>
-
-    <div class="rojo" *ngIf="registroForm.get('contrasena')?.invalid &&  registroForm.get('contrasena')?.touched"> Debes ingresar tu contraseña</div>   
-
-
+    <div class="rojo" *ngIf="registroForm.get('contrasena')?.invalid &&  registroForm.get('contrasena')?.touched">Debes ingresar tu contraseña con al menos 4 caracteres, una letra y un numero</div>   
     </form>
-  
-   
-
-
- </ion-card>
-
- <ion-grid>
-  <ion-row>
-    <ion-col size="12">
-      <ion-button expand="block" type="submit" (click)="agregar()">Registrar</ion-button>
-    </ion-col>
-  </ion-row>
-</ion-grid>
-
+  </ion-card>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12">
+        <ion-button expand="block" type="submit" (click)="agregar()">Registrar</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
-
-
-
-

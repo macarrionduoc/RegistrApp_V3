@@ -57,12 +57,12 @@ export class RegistroPage implements OnInit {
       usuario: ['', [Validators.required, Validators.minLength(3)]],
       nombre: ['', [Validators.required, Validators.minLength(3)]],
       apellido: ['', [Validators.required, Validators.minLength(3)]],
-      rut: ['', [Validators.required, Validators.minLength(3)]],
-      edad: ['', [Validators.required, Validators.minLength(2)]],
-      correo: ['', [Validators.required, Validators.minLength(3)]],
+      rut: ['', [Validators.required, Validators.pattern(/^\d{7,8}-[0-9Kk]$/)]],
+      edad: ['', [Validators.required, Validators.pattern(/^\d+$/)]],
+      correo: ['', [Validators.required, Validators.email]],
       rol: ['', [Validators.required, Validators.minLength(3)]],
       carrera: ['', [Validators.required, Validators.minLength(3)]],
-      contrasena: ['', [Validators.required, Validators.minLength(3)]],
+      contrasena: ['', [Validators.required, Validators.pattern(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{4,}$/),Validators.minLength(3)]],
     });
 
     //inicio codigo para icono
@@ -81,44 +81,45 @@ export class RegistroPage implements OnInit {
       this.par_username = navigation.extras.queryParams['username'];
       this.par_password = navigation.extras.queryParams['password'];
     }
-
     await this.storageService.init();
   }
   // fin ngOinit
 
   // Esperando funcionalidad del boton con el crud agregar
   async agregar() {
-    const nuevoUsuario = {
-      usuario: this.registroForm.value.usuario,
-      nombre: this.registroForm.value.nombre,
-      apellido: this.registroForm.value.apellido,
-      edad: this.registroForm.value.edad,
-      rut: this.registroForm.value.rut,
-      correo: this.registroForm.value.correo,
-      carrera: this.registroForm.value.carrera,
-      rol: this.registroForm.value.rol,
-      contrasena: this.registroForm.value.contrasena,
-      identificador: Date.now().toString(), //genera un identificador unico
-    };
-
+    if (this.registroForm.valid) {
+      // Crear un nuevo usuario basado en los valores del formulario
+      const nuevoUsuario = {
+        usuario: this.registroForm.value.usuario,
+        nombre: this.registroForm.value.nombre,
+        apellido: this.registroForm.value.apellido,
+        edad: this.registroForm.value.edad,
+        rut: this.registroForm.value.rut,
+        correo: this.registroForm.value.correo,
+        carrera: this.registroForm.value.carrera,
+        rol: this.registroForm.value.rol,
+        contrasena: this.registroForm.value.contrasena,
+        identificador: Date.now().toString(), // Generar un identificador único
+      };
   
-    this.usuarios.push(nuevoUsuario);
-
-    let resp = await this.storageService.agregar('usuarios', nuevoUsuario);
-
-    this.registroForm.reset()
-
-
-    if (resp) {
-      alert('Usuario Registrado');
-      await this.listar();
+      // Intentar guardar el usuario en el servicio de almacenamiento
+      const resp = await this.storageService.agregar('usuarios', nuevoUsuario);
+  
+      if (resp) {
+        // Usuario registrado con éxito
+        alert('Usuario registrado con éxito.');
+        this.usuarios.push(nuevoUsuario); // Agregar a la lista local
+        this.registroForm.reset(); // Limpiar el formulario
+        await this.listar(); // Actualizar la lista (si aplica)
+      } else {
+        // Error al registrar usuario
+        alert('No se pudo registrar el usuario. Intenta nuevamente.');
+      }
     } else {
-      alert(' No se puede registrar ');
+      // Mostrar errores si el formulario no es válido
+      this.registroForm.markAllAsTouched(); // Marca todos los campos como tocados para mostrar errores
+      alert('USUARIO NO SE PUDO REGISTRAR, INTENTE LLENAR TODOS LOS CAMPOS EN EL FORMATO SOLICITADO');
     }
-
-    // limpiamos los campos despues de agregar
-
-  } // fin de Agregar
-
+  }
   async listar() {}
 }

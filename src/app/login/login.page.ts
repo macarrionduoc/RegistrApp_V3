@@ -3,11 +3,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule,FormGroup,ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { IonicModule,AnimationController,Animation } from '@ionic/angular';
 import { NavigationExtras, Router } from '@angular/router';
-
 import {UserService} from 'src/app/user.service';// ajusta ruta segun direccion del archivo
 import { StorageService } from '../storage.service';
-
-
 
 @Component({
   selector: 'app-login',
@@ -17,25 +14,18 @@ import { StorageService } from '../storage.service';
   imports: [IonicModule,CommonModule,FormsModule,ReactiveFormsModule]
 })
 
-
 export class LoginPage implements OnInit  {
    loginForm!: FormGroup;
 
   // usuario:string="estudiante"
   // password:string="1234"
 
-  
-    
-
 // Variables para leer parametros
   @ViewChild('logo', {read:ElementRef}) logo?:ElementRef<HTMLImageElement>;
   @ViewChild('text', {read:ElementRef}) text?:ElementRef<HTMLImageElement>;
 
-
 private logoAnimation!:Animation; 
 private textAnimation!:Animation; 
-
-
 
   constructor(private fb:FormBuilder,
               private router:Router,
@@ -70,14 +60,12 @@ private textAnimation!:Animation;
   async ngOnInit(): Promise<void> {
     await this.storageService.init();
     this.loginForm.reset(); //CODIGO PARA RESTABLECER //
-   
   }
 //  CODIGO PARA LIMPIAR CAMPOS INICIALMENTE CUANDO ABRES LA VISTA //
   async ionViewWillEnter(): Promise<void> {
     // Este evento es ideal para asegurarse de que los campos estén vacíos cada vez que se vuelva a la vista
     this.loginForm.reset();
   }
-  
 
   async onLoginAlumno() {
     if (this.loginForm.valid) {
@@ -98,7 +86,6 @@ private textAnimation!:Animation;
         alert('Usuario o contraseña inválidos para Alumno');
       }
       }
-      
   }
   
   async onLoginDocente() {
@@ -120,18 +107,12 @@ private textAnimation!:Animation;
     }
   }
 
-  
-
-
-
 toRegistro() {
-  this.router.navigate(['registro'],  {queryParams:{}} ); 
-    
-    
+  this.router.navigate(['registro'],  {queryParams:{}} );
   }// funcion ir a registro.
     
-    
-    
+    //Efectos para Logo y texto
+/*
   ngAfterViewInit() {
     if(this.logo?.nativeElement && this.text?.nativeElement) {
       this.logoAnimation =this.animationCtrl.create()
@@ -146,21 +127,16 @@ toRegistro() {
 
       this.logoAnimation.play()
       this.textAnimation.play()
-
-
     } // final If
       else{
         console.error('Los elementos no fueron encontrados')
       }
-
-
   } // final After
-
+*/
 
   /*recuperarClave(){
     alert("recupear clave");
   }*/
-    
 
 } // Final 
 

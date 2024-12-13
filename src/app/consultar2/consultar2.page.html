@@ -1,4 +1,5 @@
 <ion-content [fullscreen]="true">
+<!--
   <div class="logo-container">
     <img
       #logo
@@ -13,6 +14,22 @@
   </div>
 
   <br />
+-->
+
+<!--Barra de título-->
+<ion-header [translucent]="true">
+  <ion-toolbar class="registro-toolbar" color="primary">
+    <ion-title class="ion-text-center">REGISTRO DE ALUMNOS</ion-title>
+    <!--inicio codigo para inscrustar icono en la barra-->
+    <ion-buttons slot="end">
+      <ion-button (click)="Tohome2()">
+        <ion-icon name="log-in-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <!--fin codigo para inscrustar icono en la barra-->
+  </ion-toolbar>
+</ion-header>
+
 
   <!-- INICIO FORMULARIO PARA CRUD - NUEVO -->
   <ion-content [fullscreen]="true">
@@ -209,5 +226,6 @@ BOTONES ORIGINALES DEL CRUD -->
         >Ir a home</ion-button
       >
     </div>
-  </ion-content></ion-content
->
+  </ion-content>
+</ion-content>
+

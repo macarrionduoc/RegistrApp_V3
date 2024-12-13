@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { addIcons } from 'ionicons';
+import { logInOutline } from 'ionicons/icons';
 
 import { StorageService } from 'src/app/storage.service'; //NUEVO
 
@@ -66,7 +68,9 @@ export class Consultar2Page implements OnInit {
 
     });
 
-
+    //inicio codigo para icono
+    addIcons({ 'log-in-outline': logInOutline });
+    //fin codigo para icono
 
   }  // Fin constructor
 

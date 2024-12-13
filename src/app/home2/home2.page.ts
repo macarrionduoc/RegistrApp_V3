@@ -7,9 +7,6 @@ import { addIcons } from 'ionicons';
 import { RouterModule,Router } from '@angular/router';
 import {personCircleOutline,qrCodeOutline,documentTextOutline,callOutline,exitOutline} from 'ionicons/icons'
 
-
-
-
 @Component({
   selector: 'app-home2',
   templateUrl: 'home2.page.html',
@@ -29,7 +26,6 @@ export class Home2Page  {
               'exit-outline': exitOutline
 
     })
-
 }
 
     ngOnInit() {
@@ -40,8 +36,7 @@ export class Home2Page  {
     this.usuario = navigation.extras.state['nombre'];
 
   }else{
-    alert('no se pudo obtener el state de navigation')
-
+    alert('Ups!...por seguridad inicia sesión nuevamente')
   }
 }
 }

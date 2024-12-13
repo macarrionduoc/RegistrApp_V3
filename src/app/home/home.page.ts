@@ -5,13 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { addIcons } from 'ionicons';
 import { RouterModule,Router } from '@angular/router';
-
-
-
 import {personCircleOutline,checkmarkCircleOutline,documentTextOutline,callOutline,exitOutline} from 'ionicons/icons'
-
-
-
 
 @Component({
   selector: 'app-home',
@@ -30,9 +24,7 @@ export class HomePage  {
               'document-text-outline': documentTextOutline,
               'call-outline': callOutline,
               'exit-outline': exitOutline
-    
     })
-
 }
 
     ngOnInit() {
@@ -43,55 +35,7 @@ export class HomePage  {
     this.usuario = navigation.extras.state['nombre'];
 
   }else{
-    alert('no se pudo obtener el state de navigation')
-
+    alert('Ups!...por seguridad inicia sesión nuevamente')
   }
 }
-
-
-    
-
-
-    
-    //mostrarNombre(){
-    // Obtenemos el nombre de usuario del localstorage que se inicio en el login.ts
-    //this.usuario= localStorage.getItem("usuario");
-  //}
-
-  
-  
-
-
-
-
-
-
-  /*  
-  ngOnInit(){
-    // Obtenemos el nombre de usuario del localstorage que se inicio en el login.ts
-    this.usuario= localStorage.getItem("usuario");
-  }
-
-  goToProfile() {
-    this.router.navigate(['profile'],  {queryParams:{}} );
-  }
-
-  goToconfirmar() {
-    this.router.navigate(['confirmar'],  {queryParams:{}} );
-  }
-
-  goToconsultar() {
-    this.router.navigate(['consultar'],  {queryParams:{}} );
-  }
-
-  goTomesa() {
-    this.router.navigate(['mesa'],  {queryParams:{}} );
-  }
-
-  goTologin() {
-    this.router.navigate(['/login'],  {queryParams:{}} );
-  }  
-*/
-
-
 }

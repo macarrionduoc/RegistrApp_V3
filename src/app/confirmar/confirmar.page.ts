@@ -32,7 +32,6 @@ export class ConfirmarPage implements OnInit,OnDestroy{
   async ngOnInit() {
     // Llama a la función que obtiene los datos guardados al iniciar la página
     await this.storageService.init();
-
     this.obtenerDatosGuardados();
   }
 
@@ -55,14 +54,14 @@ export class ConfirmarPage implements OnInit,OnDestroy{
         })
 
       .catch((error) => {
-        alert("No se pudieron conceder permisos a la camara");
+        alert("No se pudieron conceder permisos a la cámara");
       });
       }else {
-        alert("Navegador no soporta la camara");
+        alert("Navegador no soporta la cámara");
     }// Fin If
   }// fin Request Camera 
   
-  startScanner(){
+  async startScanner(){//acá se agrega "async"
     const config = {
       fps:10,
       qrbox:250,
@@ -73,7 +72,6 @@ export class ConfirmarPage implements OnInit,OnDestroy{
     this.Html5Qrcode.render(async(result) =>{ // aca se agregó "async" solamente
       this.scannerResult = result;
       console.log("Resultado del scanner",result);
-//      this.saveQRData(); // Guardar los datos escaneados NUEVA LINEA 63 COMPLETA QR////////////////////
 
 // Guardar el resultado en storage
 const dataToSave = {
@@ -85,8 +83,9 @@ const dataToSave = {
   
       const success = await this.storageService.agregar('qrData', dataToSave);
       if (success) {
-        alert("QR escaneado guardado con éxito.");
+        alert("QR escaneado y guardado con éxito.");
         await this.obtenerDatosGuardados(); // Actualiza la lista después de guardar
+        this.stopScanner(); // NUEVA LINEA: Detiene la cámara después del escaneo exitoso
       } else {
         alert("Este QR ya existe en la lista.");
       }
@@ -94,8 +93,20 @@ const dataToSave = {
   
     (error) =>{
       console.warn("Error  al escanear",error);
-    })
+    });//acá se agrega ";"
   }// fin start Scanner*/
+
+    // INICIO NUEVA LINEA: Método para detener el escáner y liberar recursos
+    stopScanner() {
+      if (this.Html5Qrcode) {
+        this.Html5Qrcode.clear(); // Limpia el escáner
+        this.Html5Qrcode = null; // Elimina la referencia
+        this.isCameraPermissionGranted = false; // Actualiza el estado
+        //alert("El acceso a la cámara ha sido desactivado."); // Mensaje al usuario
+      }
+    }
+    // FIN NUEVA LINEA: Método para detener el escáner y liberar recursos
+
 
   ///////// INICIO METODO PARA ESCANEAR QR /////////////////////////////
   // metodo para guardar la informacion del QR escaneado
@@ -120,12 +131,20 @@ const dataToSave = {
   }
 ///////// FIN METODO PARA ESCANEAR QR /////////////////////////////
 
+/* Función original deshabilitada por test
 ngOnDestroy(){
     if(this.Html5Qrcode){
       this.Html5Qrcode.clear();
     }
 }// Fin Destroy
+*/
 
+  // LINEA CORREGIDA: Se agregó llamada a stopScanner para detener la cámara
+  ngOnDestroy() {
+    this.stopScanner(); // Asegura que la cámara se detenga al destruir el componente
+  }
+
+//Funcion ir al HOME
 goTohome() {
   this.router.navigate(['home'],  {queryParams:{}} );
 }

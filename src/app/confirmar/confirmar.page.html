@@ -1,29 +1,24 @@
-
-
-
 <ion-content [fullscreen]="true">
-
   <div class="logo-container"   >
       <img #logo  src="assets/icon/logoblanco.png" alt="logotipo de la Empresa" class="logo" />
   </div>
-
   <div id="reader"></div>
-
+  <ion-label>Escanéa el código Qr para registrar tu asistencia!</ion-label>
   <div  *ngIf="!isCameraPermissionGranted"></div>
-    <ion-button (click)="requestCameraPermission()"> Solicitar permisos de camara </ion-button>
-
+  <!--    <ion-button (click)="requestCameraPermission()"> Solicitar permisos de camara </ion-button> -->
+    <ion-button (click)="requestCameraPermission()" [disabled]="isCameraPermissionGranted">
+      REGISTRA TU ASISTENCIA
+    </ion-button>
   <div *ngIf="scannerResult">
     <p> Resultado del Escaneo: {{scannerResult}} </p>
   </div> 
-
   <ion-item>
     <ion-button (click)="goTohome()"> Ir a Home </ion-button>
   </ion-item>
-
   <!-- Lista de datos guardados en el storage -->
   <ion-list>
     <ion-list-header>
-      <ion-label>Datos de QR Guardados</ion-label>
+      <ion-label>REGISTRO DE ASISTENCIAS</ion-label>
     </ion-list-header>
     <ion-item *ngFor="let dato of datosGuardados">
       <ion-label>
@@ -34,5 +29,3 @@
     </ion-item>
   </ion-list>
 </ion-content>
-  
-  

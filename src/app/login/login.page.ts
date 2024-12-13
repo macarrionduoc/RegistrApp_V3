@@ -50,7 +50,7 @@ private textAnimation!:Animation;
           [
           Validators.required,
           Validators.minLength(3),
-          Validators.maxLength(10),
+          Validators.maxLength(20),
           Validators.pattern('^[a-zA-Z0-9]*$')
           ]
         ],
@@ -59,9 +59,9 @@ private textAnimation!:Animation;
           '',
           [
           Validators.required,
-          Validators.minLength(4),
-          Validators.maxLength(4),
-          Validators.pattern('^[0-9]*$')
+          Validators.minLength(3),
+          Validators.maxLength(20),
+          Validators.pattern('^[a-zA-Z0-9]*$')
           ]
         ]
     }); 

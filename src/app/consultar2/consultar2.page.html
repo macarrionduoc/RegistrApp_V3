@@ -1,20 +1,4 @@
 <ion-content [fullscreen]="true">
-<!--
-  <div class="logo-container">
-    <img
-      #logo
-      src="assets/icon/logoblanco.png"
-      alt="logotipo de la Empresa"
-      class="logo"
-    />
-  </div>
-
-  <div class="text-titulo">
-    <p>LISTA DE ALUMNOS</p>
-  </div>
-
-  <br />
--->
 
 <!--Barra de título-->
 <ion-header [translucent]="true">
@@ -173,12 +157,12 @@
         <ion-card-content>
           <ion-grid>
             <ion-row>
-              <ion-col><b>Alumno</b></ion-col>
+              <ion-col><b>Nombre</b></ion-col>
               <ion-col>{{individuo.nombre}}</ion-col>
             </ion-row>
             <ion-row>
-              <ion-col><b>Edad</b></ion-col>
-              <ion-col>{{individuo.edad}}</ion-col>
+              <ion-col><b>Apellido</b></ion-col>
+              <ion-col>{{individuo.apellido}}</ion-col>
             </ion-row>
             <ion-row>
               <ion-col><b>Carrera</b></ion-col>

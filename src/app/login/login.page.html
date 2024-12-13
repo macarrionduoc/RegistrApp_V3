@@ -3,7 +3,7 @@
     <img #logo  src="assets/icon/logoblanco.png" alt="logotipo de la Empresa" class="logo" />
   </div>
   <div class = "text-titulo">
-    <p> Inicio de Sesion </p>
+    <p> Inicio de Sesión </p>
   </div>
   <form [formGroup]="loginForm" >
     <ion-item>
@@ -32,19 +32,15 @@
 <ion-toast trigger="open-toast" message="El usuario y/o contraseña es inválido" [duration]="3000"></ion-toast>
 
 <ion-item>
-  <p> Si has olvidado o Bloqueado tus credenciales haz clic Aqui!! </p>
-</ion-item>
-
-<ion-item>
+  <ion-label position="stacked">Se has olvidado o bloqueado tus credenciales, haz clic aquí!</ion-label>
+  <br>
   <ion-button expand="block" >Recuperar clave</ion-button>
   <!--(click)="recuperarClave()-->
 </ion-item>
-  
-<ion-item>
-  <p> Si no posees credenciales Haz clic aqui!! </p>
-</ion-item>
 
 <ion-item>
+  <ion-label position="stacked">Si no posees credenciales, haz clic aquí para registrarte!</ion-label>
+  <br>
   <ion-button (click)="toRegistro()"> Registro </ion-button>
 </ion-item>
 </ion-content>

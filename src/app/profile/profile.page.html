@@ -1,46 +1,69 @@
-
-
 <ion-content [fullscreen]="true">
-  
-     
-  <div class="logo-container"   >
-    <img #logo  src="assets/icon/logoblanco.png" alt="logotipo de la Empresa" class="logo" />
+  <div class="logo-container">
+    <img src="assets/icon/logoblanco.png" alt="Logotipo de la Empresa" class="logo" />
   </div>
 
-  <div class = "text-titulo">
-    <p> Perfil Usuario </p>
+  <div class="text-titulo">
+    <h2 class="titulo-azul">Perfil Usuario</h2>
   </div>
-
-<div class="text-perfil">
-
 
   <ion-card>
-  <tr> NOMBRES</tr>
-  <p> Osvaldo Nicasio </p>
-   </ion-card>
+    <div class="text-perfil">
 
-   <ion-card>
+      <ion-card>
+        <div class="franja-azul"></div>
+        <ion-item lines="none">
+          <ion-label class="titulo-azul">Nombres y Apellidos</ion-label>
+          <div class="fila-nombre-apellido">
+            <p>{{ usuarioLogueado.nombre || 'N/A' }}</p>
+            <p>{{ usuarioLogueado.apellido || 'N/A' }}</p>
+          </div>
+        </ion-item>
+      </ion-card>
 
-  <tr> APELLIDOS </tr>
-  <p> Chetumori Gonzalez  </p>
-    </ion-card>
+      <ion-card>
+        <div class="franja-azul"></div>
+        <ion-item lines="none">
+          <ion-label class="titulo-azul">Rut</ion-label>
+          <p>{{ usuarioLogueado.rut || 'N/A' }}</p>
+        </ion-item>
+      </ion-card>
 
-    <ion-card>
-  <tr>  RUT </tr>
-  <p> 17516847-8  </p>
-    </ion-card>
-    <ion-card>
-  <tr> CORREO ELECTRONICO </tr>
-  <p> OS.CHETUMORIDUOCUC.CL  </p>
-    </ion-card>
-  
-</div>
+      <ion-card>
+        <div class="franja-azul"></div>
+        <ion-item lines="none">
+          <ion-label class="titulo-azul">Correo Electrónico</ion-label>
+          <p>{{ usuarioLogueado.correo || 'N/A' }}</p>
+        </ion-item>
+      </ion-card>
 
-<div class="boton-volver">
-  <ion-button expand="block" type="submit" (click)="goTohome()"> Guardar Cambios </ion-button>
-</div>
+      <ion-card>
+        <div class="franja-azul"></div>
+        <ion-item lines="none">
+          <ion-label class="titulo-azul">Edad</ion-label>
+          <p>{{ usuarioLogueado.edad || 'N/A' }}</p>
+        </ion-item>
+      </ion-card>
 
+      <ion-card>
+        <div class="franja-azul"></div>
+        <ion-item lines="none">
+          <ion-label class="titulo-azul">Carrera</ion-label>
+          <p>{{ usuarioLogueado.carrera || 'N/A' }}</p>
+        </ion-item>
+      </ion-card>
 
+      <ion-card>
+        <div class="franja-azul"></div>
+        <ion-item lines="none">
+          <ion-label class="titulo-azul">Rol en Aplicación</ion-label>
+          <p>{{ usuarioLogueado.rol || 'N/A' }}</p>
+        </ion-item>
+      </ion-card>
+    </div>
+  </ion-card>
 
- 
+  <div class="boton-volver">
+    <ion-button expand="block" type="submit" (click)="goToHome()" color="primary">Volver al Menú</ion-button>
+  </div>
 </ion-content>

@@ -108,4 +108,9 @@ export class StorageService {
     return valor || null;
   }
   
+  // codigo nuevo para PROFILE 1 y 2!!
+  async obtenerItem(key: string): Promise<any> {
+    return this.storage?.get(key) || null;
+  }
+
 }

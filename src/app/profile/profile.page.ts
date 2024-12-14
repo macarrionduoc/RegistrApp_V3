@@ -1,33 +1,26 @@
-import { Component, OnInit,} from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-//import { IonContent, IonHeader, IonTitle, IonToolbar,IonButton } from '@ionic/angular/standalone';
-import { IonicModule } from '@ionic/angular';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
-
-
+import { StorageService } from '../storage.service';
+import { IonicModule } from '@ionic/angular';
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.page.html',
   styleUrls: ['./profile.page.scss'],
   standalone: true,
-  //imports: [IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonButton]
-  imports: [ CommonModule, FormsModule, IonicModule ]
+    imports: [IonicModule],
 })
+export class ProfilePage implements OnInit {
+  usuarioLogueado: any = {}; // Variable para almacenar los datos del usuario
 
-export class ProfilePage{
+  constructor(private router: Router, private storageService: StorageService) {}
 
-
-  constructor(private router: Router) { }
-
-
-  goTohome() {
-    this.router.navigate(['home'],  {queryParams:{}} );
+  async ngOnInit() {
+    // Obtener los datos del usuario logueado desde el Storage a través del nuevo método
+    this.usuarioLogueado = await this.storageService.obtenerItem('usuarioLogueado') || {};
   }
 
-  ngOnInit() {
+  goToHome() {
+    this.router.navigate(['home']);
   }
-
 }
